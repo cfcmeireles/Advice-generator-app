@@ -14,19 +14,30 @@
         <img src="../images/pattern-divider-desktop.svg" />
       </div>
     </div>
+    <button
+      @click="callFetchData()"
+      class="w-16 h-16 rounded-full flex justify-center items-center -mt-8"
+    >
+      <slot name="button">
+        <img src="../images/icon-dice.svg" />
+      </slot>
+    </button>
   </div>
 </template>
 
+<script>
+export default {
+  inject: ["callFetchData"],
+};
+</script>
 
 <style scoped>
 button {
   background: #52ffa8;
 }
 
-@media (min-width: theme("screens.lg")) {
-  button:hover {
-    color: rgba(82, 255, 168, 1);
-    box-shadow: 0 0 15px rgba(82, 255, 168, 1);
-  }
+button:hover {
+  color: rgba(82, 255, 168, 1);
+  box-shadow: 0 0 15px rgba(82, 255, 168, 1);
 }
 </style>
