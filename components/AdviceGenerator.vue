@@ -23,25 +23,13 @@ export default {
     async fetchData() {
       try {
         const response = await useFetch("https://api.adviceslip.com/advice");
-
-        if (!response || !response.data || !response.data._rawValue) {
-          throw new Error("Invalid response structure");
-        }
-
         const jsonData = response.data._rawValue;
-        console.log("JSON Data:", jsonData);
         const data = JSON.parse(jsonData);
 
-        if (data && data.slip) {
-          this.adviceValue = data.slip.advice;
-          this.adviceId = data.slip.id;
-        } else {
-          throw new Error("Invalid data structure received");
-        }
+        this.adviceValue = data.slip.advice;
+        this.adviceId = data.slip.id;
       } catch (error) {
         console.error("Error fetching advice:", error);
-        this.adviceValue = "Default Advice";
-        this.adviceId = 0;
       }
     },
   },

@@ -28,6 +28,9 @@
 <script>
 export default {
   inject: ["callFetchData"],
+  mounted() {
+    this.callFetchData();
+  },
 };
 </script>
 
