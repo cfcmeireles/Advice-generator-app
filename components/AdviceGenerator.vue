@@ -1,5 +1,5 @@
 <template>
-  <BoxFrame v-if="adviceValue !== null">
+  <BoxFrame v-if="this.adviceValue !== null">
     <template #title>ADVICE #{{ adviceId }}</template>
     <template #description>"{{ adviceValue }}"</template>
   </BoxFrame>
@@ -20,23 +20,17 @@ export default {
     };
   },
   methods: {
-    fetchData() {
-      return new Promise(async (resolve, reject) => {
-        try {
-          const response = await useFetch("https://api.adviceslip.com/advice");
-          const jsonData = response.data._rawValue;
-          const data = JSON.parse(jsonData);
+    async fetchData() {
+      try {
+        const response = await useFetch("https://api.adviceslip.com/advice");
+        const jsonData = response.data._rawValue;
+        const data = JSON.parse(jsonData);
 
-          this.adviceValue = data.slip.advice;
-          this.adviceId = data.slip.id;
-
-          resolve({ adviceValue: this.adviceValue, adviceId: this.adviceId });
-        } catch (error) {
-          console.error("Error fetching advice:", error);
-
-          reject(error);
-        }
-      });
+        this.adviceValue = data.slip.advice;
+        this.adviceId = data.slip.id;
+      } catch (error) {
+        console.error("Error fetching advice:", error);
+      }
     },
   },
   provide() {
