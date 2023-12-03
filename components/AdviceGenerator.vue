@@ -15,7 +15,7 @@ export default {
   BoxFrame,
   data() {
     return {
-      adviceValue: "",
+      adviceValue: null,
       adviceId: null,
     };
   },
@@ -30,6 +30,7 @@ export default {
         this.adviceId = data.slip.id;
       } catch (error) {
         console.error("Error fetching advice:", error);
+        this.adviceValue = "Looking for some advice?";
       }
     },
   },
