@@ -23,7 +23,13 @@ export default {
     async fetchData() {
       try {
         const response = await useFetch("https://api.adviceslip.com/advice");
-        const jsonData = response.data?._rawValue;
+
+        if (!response || !response.data || !response.data._rawValue) {
+          throw new Error("Invalid response structure");
+        }
+
+        const jsonData = response.data._rawValue;
+        console.log("JSON Data:", jsonData);
         const data = JSON.parse(jsonData);
 
         if (data && data.slip) {
