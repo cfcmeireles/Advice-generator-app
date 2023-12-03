@@ -1,5 +1,5 @@
 <template>
-  <BoxFrame v-if="this.adviceValue !== null">
+  <BoxFrame v-if="adviceValue !== null">
     <template #title>ADVICE #{{ adviceId }}</template>
     <template #description>"{{ adviceValue }}"</template>
   </BoxFrame>
