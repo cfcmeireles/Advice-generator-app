@@ -20,17 +20,23 @@ export default {
     };
   },
   methods: {
-    async fetchData() {
-      try {
-        const response = await useFetch("https://api.adviceslip.com/advice");
-        const jsonData = response.data._rawValue;
-        const data = JSON.parse(jsonData);
+    fetchData() {
+      return new Promise(async (resolve, reject) => {
+        try {
+          const response = await useFetch("https://api.adviceslip.com/advice");
+          const jsonData = response.data._rawValue;
+          const data = JSON.parse(jsonData);
 
-        this.adviceValue = data.slip.advice;
-        this.adviceId = data.slip.id;
-      } catch (error) {
-        console.error("Error fetching advice:", error);
-      }
+          this.adviceValue = data.slip.advice;
+          this.adviceId = data.slip.id;
+
+          resolve({ adviceValue: this.adviceValue, adviceId: this.adviceId });
+        } catch (error) {
+          console.error("Error fetching advice:", error);
+
+          reject(error);
+        }
+      });
     },
   },
   provide() {
