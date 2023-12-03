@@ -15,7 +15,7 @@ export default {
   BoxFrame,
   data() {
     return {
-      adviceValue: null,
+      adviceValue: "",
       adviceId: null,
     };
   },
