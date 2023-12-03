@@ -26,11 +26,16 @@ export default {
         const jsonData = response.data._rawValue;
         const data = JSON.parse(jsonData);
 
-        this.adviceValue = data.slip.advice;
-        this.adviceId = data.slip.id;
+        if (data && data.slip) {
+          this.adviceValue = data.slip.advice;
+          this.adviceId = data.slip.id;
+        } else {
+          console.error("Invalid data structure received:", data);
+          this.adviceValue = "No advice available at this time";
+        }
       } catch (error) {
         console.error("Error fetching advice:", error);
-        this.adviceValue = "Looking for some advice?";
+        this.adviceValue = "No advice available at this time";
       }
     },
   },
