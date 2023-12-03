@@ -23,7 +23,7 @@ export default {
     async fetchData() {
       try {
         const response = await useFetch("https://api.adviceslip.com/advice");
-        const jsonData = response.data._rawValue;
+        const jsonData = response.data?._rawValue;
         const data = JSON.parse(jsonData);
 
         if (data && data.slip) {
