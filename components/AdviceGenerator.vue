@@ -1,11 +1,11 @@
 <template>
-  <BoxFrame v-if="!this.adviceValue">
-    <template #title>Looking for some advice?</template>
-    <template #description>Click below to get started!</template>
-  </BoxFrame>
-  <BoxFrame v-else>
+  <BoxFrame v-if="adviceValue !== null">
     <template #title>ADVICE #{{ adviceId }}</template>
     <template #description>"{{ adviceValue }}"</template>
+  </BoxFrame>
+  <BoxFrame v-else>
+    <template #title>Looking for some advice?</template>
+    <template #description>Click below to get started!</template>
   </BoxFrame>
 </template>
 
