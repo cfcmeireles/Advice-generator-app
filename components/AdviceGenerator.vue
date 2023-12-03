@@ -34,7 +34,6 @@ export default {
         }
       } catch (error) {
         console.error("Error fetching advice:", error);
-
         this.adviceValue = "Default Advice";
         this.adviceId = 0;
       }
