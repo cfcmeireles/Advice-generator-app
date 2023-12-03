@@ -14,25 +14,9 @@
         <img src="../images/pattern-divider-desktop.svg" />
       </div>
     </div>
-    <button
-      @click="callFetchData()"
-      class="w-16 h-16 rounded-full flex justify-center items-center -mt-8"
-    >
-      <slot name="button">
-        <img src="../images/icon-dice.svg" />
-      </slot>
-    </button>
   </div>
 </template>
 
-<script>
-export default {
-  inject: ["callFetchData"],
-  mounted() {
-    this.callFetchData();
-  },
-};
-</script>
 
 <style scoped>
 button {

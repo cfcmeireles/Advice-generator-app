@@ -7,6 +7,12 @@
     <template #title>ADVICE #{{ adviceId }}</template>
     <template #description>"{{ adviceValue }}"</template>
   </BoxFrame>
+  <button
+    @click="fetchData()"
+    class="w-16 h-16 rounded-full flex justify-center items-center -mt-8"
+  >
+    <img src="../images/icon-dice.svg" />
+  </button>
 </template>
 
 <script>
@@ -32,11 +38,6 @@ export default {
         console.error("Error fetching advice:", error);
       }
     },
-  },
-  provide() {
-    return {
-      callFetchData: this.fetchData,
-    };
   },
 };
 </script>
