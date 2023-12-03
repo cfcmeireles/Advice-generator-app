@@ -1,7 +1,9 @@
 <template>
   <div class="flex flex-col items-center font-manrope justify-center h-screen">
-    <div class="bg-darkgrayishblue text-center w-11/12 rounded-xl">
-      <p class="text-neongreen text-sm pt-10 tracking-widest">
+    <div
+      class="bg-darkgrayishblue text-center w-11/12 rounded-xl md:w-3/5 lg:w-1/3"
+    >
+      <p class="text-neongreen text-md pt-10 tracking-widest">
         <slot name="title"></slot>
       </p>
 
@@ -14,7 +16,7 @@
     </div>
     <button
       @click="callFetchData()"
-      class="w-16 h-16 rounded-full bg-neongreen flex justify-center items-center -mt-8"
+      class="w-16 h-16 rounded-full flex justify-center items-center -mt-8"
     >
       <slot name="button">
         <img src="../images/icon-dice.svg" />
@@ -28,3 +30,16 @@ export default {
   inject: ["callFetchData"],
 };
 </script>
+
+<style scoped>
+button {
+  background: #52ffa8;
+}
+
+@media (min-width: theme("screens.lg")) {
+  button:hover {
+    color: rgba(82, 255, 168, 1);
+    box-shadow: 0 0 15px rgba(82, 255, 168, 1);
+  }
+}
+</style>
